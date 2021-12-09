@@ -6,7 +6,7 @@
 /*   By: iyoshiha <iyoshiha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:46:07 by iyoshiha          #+#    #+#             */
-/*   Updated: 2021/12/10 06:15:56 by iyoshiha         ###   ########.fr       */
+/*   Updated: 2021/12/10 07:20:48 by iyoshiha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define GNL_NEWLINE_NOT_FOUND -1
 # define GNL_LAST_LINE 1
 # define UNTIL_REACH_EOF_OR_FIND_NEWLINE 1
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 20
+#endif
 
 typedef struct s_txt
 {
