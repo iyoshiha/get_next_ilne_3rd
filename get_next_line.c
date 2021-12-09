@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyoshiha <iyoshiha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 17:46:32 by iyoshiha          #+#    #+#             */
-/*   Updated: 2021/12/10 06:30:01 by iyoshiha         ###   ########.fr       */
+/*   Created: 2021/12/10 07:16:02 by iyoshiha          #+#    #+#             */
+/*   Updated: 2021/12/10 07:16:09 by iyoshiha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
-#endif
 
 int	find_newline(char *save, t_txt *txt)
 {
