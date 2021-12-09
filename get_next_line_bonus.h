@@ -3,10 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: iyoshiha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/10 07:31:58 by iyoshiha          #+#    #+#             */
+/*   Updated: 2021/12/10 07:32:48 by iyoshiha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: iyoshiha <iyoshiha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:46:07 by iyoshiha          #+#    #+#             */
-/*   Updated: 2021/12/10 07:20:48 by iyoshiha         ###   ########.fr       */
+/*   Updated: 2021/12/10 07:31:41 by iyoshiha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +42,9 @@
 # define GNL_NEWLINE_NOT_FOUND -1
 # define GNL_LAST_LINE 1
 # define UNTIL_REACH_EOF_OR_FIND_NEWLINE 1
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 20
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 20
+# endif
 
 typedef struct s_txt
 {
