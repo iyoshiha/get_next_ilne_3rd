@@ -6,11 +6,11 @@
 /*   By: iyoshiha <iyoshiha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:46:16 by iyoshiha          #+#    #+#             */
-/*   Updated: 2021/12/10 07:16:55 by iyoshiha         ###   ########.fr       */
+/*   Updated: 2021/12/10 13:27:05 by iyoshiha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -36,7 +36,7 @@ char	*ft_strjoin(char const *head, char const *tail)
 	i = 0;
 	len_head = ft_strlen(head);
 	len_tail = ft_strlen(tail);
-	joined_str = (char *)malloc(sizeof(char) * (len_head + len_tail + END_STR));
+	joined_str = malloc((size_t)(len_head + len_tail + END_STR));
 	if (!(joined_str))
 		return (NULL);
 	while (i < len_head)
@@ -78,5 +78,5 @@ void	*read_and_detect_err_fin(char **save, char *buf, t_txt *txt)
 		manage_buf(free_buf, save, &buf, txt);
 		return (ERROR_OR_FINISH);
 	}
-	return (VALID);
+	return (buf);
 }

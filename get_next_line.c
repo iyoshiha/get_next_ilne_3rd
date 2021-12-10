@@ -6,13 +6,13 @@
 /*   By: iyoshiha <iyoshiha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 07:16:02 by iyoshiha          #+#    #+#             */
-/*   Updated: 2021/12/10 07:16:09 by iyoshiha         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:27:53 by iyoshiha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	find_newline(char *save, t_txt *txt)
+ssize_t	find_newline(char *save, t_txt *txt)
 {
 	txt->save_len = 0;
 	txt->newline_index = GNL_NEWLINE_NOT_FOUND;
@@ -34,7 +34,8 @@ void	*manage_buf(t_buf_cmd command, char **save, char **buf, t_txt *txt)
 
 	if (command == malloc_buf)
 	{
-		*buf = malloc(BUFFER_SIZE + END_STR);
+		find_newline(save[txt->fd], txt);
+		*buf = malloc((size_t)BUFFER_SIZE + END_STR);
 		if (*buf == NULL)
 			return (MEMORY_ERROR);
 	}
@@ -52,18 +53,17 @@ void	*manage_buf(t_buf_cmd command, char **save, char **buf, t_txt *txt)
 		return (save[txt->fd]);
 	}
 	else if (command == free_buf)
-		if (*buf != NULL)
-			free(*buf);
+		free(*buf);
 	return (MEMORY_SUCCESS);
 }
 
 void	*create_oneline(t_txt *txt, char **save)
 {
-	int		i;
+	size_t	i;
 	char	*old_save;
 
 	i = 0;
-	txt->line = (char *)malloc(txt->save_len + END_STR);
+	txt->line = malloc((size_t)txt->save_len + END_STR);
 	if (txt->line == MEMORY_ERROR)
 		return (MEMORY_ERROR);
 	while (save[txt->fd][i] != '\0')
@@ -85,15 +85,16 @@ void	*create_oneline(t_txt *txt, char **save)
 
 char	*get_next_line(int fd)
 {
-	static char	*save[1024];
+	static char	*save[OPEN_MAX];
 	char		*buf;
 	t_txt		txt;
 
+	if (read(fd, NULL, 0) <= READ_ERR)
+		return (NULL);
 	txt.fd = fd;
 	if (manage_buf(malloc_buf, save, &buf, &txt) == MEMORY_ERROR)
 		return (MEMORY_ERROR);
-	find_newline(save[fd], &txt);
-	while (UNTIL_REACH_EOF_OR_FIND_NEWLINE)
+	while (1)
 	{
 		if (ERROR_OR_FINISH == read_and_detect_err_fin(save, buf, &txt))
 			return (ERROR_OR_FINISH);

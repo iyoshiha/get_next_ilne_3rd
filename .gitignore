@@ -1,6 +1,2 @@
-main.c
-test
-alternate_line_nl_no_nl
-a.out
-alternate_line_nl_with_nl
-big_line_no_nl
+*
+!get_next_line*
